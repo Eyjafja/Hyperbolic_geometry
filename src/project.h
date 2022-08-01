@@ -8,7 +8,7 @@
 const int centerx = 683, centery = 350;//Центральные точки
 const int SpaceRadius = 200; //Радиус Гиперболического/Сферического/Евклидового пространсства
 const double alpha = 0.03; //Шаг для поворота
-const int Number_Of_dots = 1000; // Количество точек
+const int Number_Of_Dots = 1000; // Количество точек
 
 const std::array<std::array<double, 3>, 3> YSpin = {{{cos(alpha), 0, sin(alpha)},
                                                      {0, 1, 0},
@@ -98,5 +98,31 @@ public:
     void FrontDraw(std::array<std::array<double, 3>, 3> DirMat){//Отрисовка передней стороны сферы
         std::array<std::array<double, 3>, 3> DrawXYZ = MultMatrix({{{x, y, z},{0, 0, 0},{0, 0, 0}}}, DirMat);
         if(DrawXYZ[0][2] >= 0) DrawDot(DrawXYZ[0][0], DrawXYZ[0][1], DrawXYZ[0][2]);
+    }
+};
+
+class FPS {
+private:
+    sf::Clock clock;
+    float lastTime;
+    int fps;
+    int cnt;
+
+public:
+
+    FPS(){
+        lastTime = 0;
+        cnt = 0;
+        fps = 0;
+    }
+
+    int getFPS(){
+        cnt += 1;
+        if (cnt % 10 == 0) {
+            fps = 10.f / (clock.restart().asSeconds() - lastTime);
+            lastTime = clock.restart().asSeconds();
+            cnt = 0;
+        }
+        return fps;
     }
 };

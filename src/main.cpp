@@ -15,11 +15,11 @@ int main()
                                                     {0, 0, 1}}};
     bool up = false, down = false, left = false, right = false;
     std::vector<Dot> DotVec;
-    for(int i = 0; i < Number_Of_dots; i++){//Создание точек
+    for(int i = 0; i < Number_Of_Dots; i++){//Создание точек
         Dot dot{};
         DotVec.push_back(dot);
     }
-
+    FPS c;
     while (window.isOpen())
     {
         sf::Event event;
@@ -56,10 +56,11 @@ int main()
             DirMat = MultMatrix(DirMat, NegativeYSpin);
         }
 
-        for(int i = 0; i < Number_Of_dots; i++) DotVec[i].BackDraw(DirMat); //Отрисовка точек на сфере
-        for(int i = 0; i < Number_Of_dots; i++) DotVec[i].FrontDraw(DirMat);
+        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].BackDraw(DirMat); //Отрисовка точек на сфере
+        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].FrontDraw(DirMat);
 
         window.display();
+        std::cout << c.getFPS() << std::endl;
     }
 
     return 0;

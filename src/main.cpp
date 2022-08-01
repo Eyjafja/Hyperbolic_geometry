@@ -2,7 +2,7 @@
 
 int main()
 {
-    window.setVerticalSyncEnabled(true);//Вертикальная синхронизация
+    window.setVerticalSyncEnabled(false);//Вертикальная синхронизация
 
     sf::CircleShape Space(SpaceRadius);//Пространство
     Space.setPosition({static_cast<float>(centerx - SpaceRadius), static_cast<float>(centery - SpaceRadius)});
@@ -19,7 +19,7 @@ int main()
         Dot dot{};
         DotVec.push_back(dot);
     }
-    FPS c;
+    FPS fps;
     while (window.isOpen())
     {
         sf::Event event;
@@ -60,7 +60,7 @@ int main()
         for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].FrontDraw(DirMat);
 
         window.display();
-        std::cout << c.getFPS() << std::endl;
+        std::cout << fps.getFPS() << std::endl;
     }
 
     return 0;

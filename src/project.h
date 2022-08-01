@@ -101,7 +101,7 @@ public:
     }
 };
 
-class FPS {
+class FPS { //Класс фпс
 private:
     sf::Clock clock;
     float lastTime;
@@ -119,7 +119,7 @@ public:
     int getFPS(){
         cnt += 1;
         if (cnt % 10 == 0) {
-            fps = 10.f / (clock.restart().asSeconds() - lastTime);
+            fps = 10.0 / (clock.restart().asSeconds() - lastTime);
             lastTime = clock.restart().asSeconds();
             cnt = 0;
         }

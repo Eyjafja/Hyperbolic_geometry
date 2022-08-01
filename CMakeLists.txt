@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 project(Hyperbolic_geometry)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "-Ofast")
 set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc")
 set(SFML_STATIC_LIBRARIES TRUE)
 

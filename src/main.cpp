@@ -23,22 +23,25 @@ int main()
     while (window.isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event)) if (event.type == sf::Event::Closed) window.close();
+        while (window.pollEvent(event)){
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+            else if (event.type == sf::Event::KeyPressed) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) up = true;
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) down = true;
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) left = true;
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) right = true;
+            }
+            else if (event.type == sf::Event::KeyReleased) {
+                if (event.key.code == sf::Keyboard::W) up = false;
+                if (event.key.code == sf::Keyboard::S) down = false;
+                if (event.key.code == sf::Keyboard::A) left = false;
+                if (event.key.code == sf::Keyboard::D) right = false;
+            }
+        }
         window.clear(sf::Color::White);
         window.draw(Space);
-
-        if (event.type == sf::Event::KeyPressed) {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) up = true;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) down = true;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) left = true;
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) right = true;
-        }
-        else if (event.type == sf::Event::KeyReleased) {
-            if (event.key.code == sf::Keyboard::W) up = false;
-            if (event.key.code == sf::Keyboard::S) down = false;
-            if (event.key.code == sf::Keyboard::A) left = false;
-            if (event.key.code == sf::Keyboard::D) right = false;
-        }
 
         if(up){
                 DirMat = MultMatrix(DirMat, XSpin);

@@ -2,6 +2,7 @@
 
 int main()
 {
+    sf::RenderWindow window(sf::VideoMode(1366, 700), "SFML works!");
     window.setVerticalSyncEnabled(false);//Вертикальная синхронизация
 
     sf::CircleShape Space(SpaceRadius);//Пространство
@@ -56,8 +57,8 @@ int main()
             DirMat = MultMatrix(DirMat, NegativeYSpin);
         }
 
-        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].BackDraw(DirMat); //Отрисовка точек на сфере
-        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].FrontDraw(DirMat);
+        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].BackDraw(window, DirMat); //Отрисовка точек на сфере
+        for(int i = 0; i < Number_Of_Dots; i++) DotVec[i].FrontDraw(window, DirMat);
 
         window.display();
         std::cout << fps.getFPS() << std::endl;

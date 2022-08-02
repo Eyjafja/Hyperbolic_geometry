@@ -3,7 +3,7 @@
 
 1. git clone git@github.com:Eyjafja/Hyperbolic_geometry.git
 
-2. You need to replace in "CMakeLists.txt" set(SFML_DIR C:/SFML/lib/cmake/SFML) to set(SFML_DIR <YourPathTo>/SFML/lib/cmake/SFML)
+2. You need to replace in "CMakeLists.txt" set(SFML_DIR C:/SFML/lib/cmake/SFML) to set(SFML_DIR Your/Path/To/SFML/lib/cmake/SFML)
 
 3. cd Hyperbolic_geometry
 

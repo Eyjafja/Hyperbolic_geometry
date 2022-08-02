@@ -77,7 +77,7 @@ public:
         return Coords;
     }
 
-    void DrawDot(double drawx, double drawy, double drawz){//Отрисовка по точкам
+    void DrawDot(double drawx, double drawy, double drawz) const {//Отрисовка по точкам
         sf::CircleShape sh(r);
         sh.setPosition({static_cast<float>(drawx * SpaceRadius + centerx - r), static_cast<float>(drawy * SpaceRadius + centery - r)});
         if(drawz >= 0) {
@@ -89,6 +89,7 @@ public:
         }
         window.draw(sh);
     }
+
 
     void BackDraw(std::array<std::array<double, 3>, 3> DirMat){//Отрисовка задней стороны сферы
         std::array<std::array<double, 3>, 3> DrawXYZ = MultMatrix({{{x, y, z},{0, 0, 0},{0, 0, 0}}}, DirMat);
@@ -106,22 +107,22 @@ private:
     sf::Clock clock;
     float lastTime;
     int fps;
-    int cnt;
+    int ticks;
 
 public:
 
     FPS(){
         lastTime = 0;
-        cnt = 0;
+        ticks = 0;
         fps = 0;
     }
 
     int getFPS(){
-        cnt += 1;
-        if (cnt % 10 == 0) {
+        ticks += 1;
+        if (ticks % 10 == 0) {
             fps = 10.0 / (clock.restart().asSeconds() - lastTime);
             lastTime = clock.restart().asSeconds();
-            cnt = 0;
+            ticks = 0;
         }
         return fps;
     }

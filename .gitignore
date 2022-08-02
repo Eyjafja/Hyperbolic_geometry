@@ -2,7 +2,8 @@
 /.idea
 /cmake-build-debug/.cmake
 /cmake-build-debug/CMakeFiles
-/cmake-build-debug/Testing/cmake_install.cmake
-/cmake-build-debug/Testing/CMakeCache.txt
-/cmake-build-debug/Testing/Hyperbolic_geometry.cbp
-/cmake-build-debug/Testing/Makefile
+/cmake-build-debug/cmake_install.cmake
+/cmake-build-debug/CMakeCache.txt
+/cmake-build-debug/Hyperbolic_geometry.cbp
+/cmake-build-debug/Makefile
+/cmake-build-debug/Testing

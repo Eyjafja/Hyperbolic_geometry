@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "-Ofast")
 set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc")
 set(SFML_STATIC_LIBRARIES TRUE)
 
-add_executable (Hyperbolic_geometry src/main.cpp src/project.h)
+add_executable (Hyperbolic_geometry src/main.cpp src/project.hpp src/project.cpp)
 
 set(SFML_DIR C:/SFML/lib/cmake/SFML)
 

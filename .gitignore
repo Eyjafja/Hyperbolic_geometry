@@ -1,2 +1,7 @@
 # Project exclude paths
-/cmake-build-debug/
+/cmake-build-debug/.cmake
+/cmake-build-debug/CMakeFiles
+/cmake-build-debug/Testing/cmake_install.cmake
+/cmake-build-debug/Testing/CMakeCache.txt
+/cmake-build-debug/Testing/Hyperbolic_geometry.cbp
+/cmake-build-debug/Testing/Makefile

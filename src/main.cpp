@@ -3,7 +3,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1366, 700), "SFML works!");
-    window.setVerticalSyncEnabled(false);//Вертикальная синхронизация
+    window.setVerticalSyncEnabled(true);//Вертикальная синхронизация
 
     sf::CircleShape Space(SpaceRadius);//Пространство
     Space.setPosition({static_cast<float>(centerx - SpaceRadius), static_cast<float>(centery - SpaceRadius)});
@@ -16,11 +16,13 @@ int main()
                                                     {0, 0, 1}}};
     bool up = false, down = false, left = false, right = false;
     std::vector<Dot> DotVec;
+    FPS fps;
+
     for(int i = 0; i < Number_Of_Dots; i++){//Создание точек
-        Dot dot{};
+        Dot dot({200, 0, CalcZ(200, 0)});
         DotVec.push_back(dot);
     }
-    FPS fps;
+
     while (window.isOpen())
     {
         sf::Event event;

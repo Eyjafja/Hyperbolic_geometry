@@ -10,7 +10,7 @@
 const int centerx = 683, centery = 350;//Центральные точки
 const int SpaceRadius = 200; //Радиус Гиперболического/Сферического/Евклидового пространсства
 const double alpha = 0.03; //Шаг для поворота
-const int Number_Of_Dots = 1000; // Количество точек
+const int Number_Of_Dots = 1; // Количество точек
 
 const std::array<std::array<double, 3>, 3> YSpin = {{{cos(alpha), 0, sin(alpha)},
                                                      {0, 1, 0},
@@ -33,10 +33,11 @@ const std::array<std::array<double, 3>, 3> NegativeXSpin = {{{1, 0, 0}, //
 /*Функции*/
 std::array<std::array<double, 3>, 3> MultMatrix(std::array<std::array<double, 3>, 3> First, std::array<std::array<double, 3>, 3> Second); //Перемножение матриц
 
+std::array<double, 3> RandCoords();
 
 double Randfloat(int min, int max);//Функция для выдачи случайного числа
 
-
+double CalcZ(double x, double y);
 
 //=======================================Класс Точки========================================
 class Dot{//Класс точки
@@ -46,7 +47,7 @@ private:
     float r = 5;
 
 public:
-    Dot();
+    Dot(std::array<double, 3> XYZ);
 
     std::array<double, 3> GetCoords();
 
@@ -56,7 +57,7 @@ public:
 
     void FrontDraw(sf::RenderWindow &window, std::array<std::array<double, 3>, 3> DirMat);
 
-    void SetCoords(double x, double y);
+    //void SetCoords(double x, double y);
 };
 
 class FPS { //Класс фпс

@@ -28,15 +28,29 @@ double Randfloat(int min, int max){//Функция для выдачи случ
     return value;
 }
 
+std::array<double, 3> RandCoords(){
+    double fi = Randfloat(-180, 180);
+    double teta = Randfloat(-90, 90);
+    double x = cos(fi) * cos(teta);
+    double y = sin(fi) * cos(teta);
+    double z = sin(teta);
+    return {x, y, z};
+}
+
+double CalcZ(double x, double y){
+    x /= SpaceRadius;
+    y /= SpaceRadius;
+    double z = sqrt(1 - x*x - y*y);
+    return z * SpaceRadius;
+}
+
 
 
 //=======================================Класс Точки========================================
-Dot::Dot(){
-    double fi = Randfloat(-180, 180);
-    double teta = Randfloat(-90, 90);
-    x = cos(fi) * cos(teta);
-    y = sin(fi) * cos(teta);
-    z = sin(teta);
+Dot::Dot(std::array<double, 3> XYZ){
+    x = XYZ[0] / SpaceRadius;
+    y = XYZ[1] / SpaceRadius;
+    z = XYZ[2] / SpaceRadius;
 }
 
 std::array<double, 3> Dot::GetCoords(){
@@ -66,6 +80,9 @@ void Dot::BackDraw(sf::RenderWindow &window, std::array<std::array<double, 3>, 3
     std::array<std::array<double, 3>, 3> DrawXYZ = MultMatrix({{{x, y, z},{0, 0, 0},{0, 0, 0}}}, DirMat);
     if(DrawXYZ[0][2] < 0) DrawDot(window, DrawXYZ[0][0], DrawXYZ[0][1], DrawXYZ[0][2]);
 }
+
+
+
 //=======================================Класс FPS========================================
 FPS::FPS(){
     lastTime = 0;
@@ -76,7 +93,7 @@ FPS::FPS(){
 int FPS::getFPS(){
     ticks += 1;
     if (ticks % 10 == 0) {
-        fps = 10.f / (clock.restart().asSeconds() - lastTime);
+        fps = 10.0 / (clock.restart().asSeconds() - lastTime);
         lastTime = clock.restart().asSeconds();
         ticks = 0;
     }
